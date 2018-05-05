@@ -1,0 +1,112 @@
+<body>
+
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Expensify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i>  Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i>  Expenses</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+  <div class="row">
+    <div class="col-3">  
+ <h3>Transaction Type</h3>
+ <h6>Select to Filter</h6>
+  <div class="list-group">
+
+ <% @transaction_types.each do |transaction_type| %>
+  <button class="transaction-type" id=<%=transaction_type.name %> >
+    <%=transaction_type.name %></button>
+  <% end%>
+
+
+
+  <a href="#" class="list-group-item list-group-item-action back transaction-type" id="purchase">
+    Purchase
+  </a>
+  <a href="#" class="list-group-item list-group-item-action back">Withdrawal</a>
+  <a href="#" class="list-group-item list-group-item-action">Transfer</a>
+  <a href="#" class="list-group-item list-group-item-action">Payment</a>
+  
+</div>
+
+</div>
+
+
+
+
+
+  <div class="col-9">
+      <div class="row">
+        <div class="col-4">
+          <div>$5,345,435</div>  
+          <div>Total</div>
+        </div>
+        <div class="col-4">
+          <div>$5,345,435</div>    
+          <div>Total</div>
+        </div>  
+        <div class="col-4">
+          <div>$5,345,435</div>  
+          <div>Total</div>
+        </div>    
+      </div>
+
+
+      <div class="container mt-3">
+        <div class="d-flex">
+          <button type="button" class="btn transparent">+ New Expenses</button>
+          
+
+          <div class="dropdown ml-auto">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+            </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+          </div>
+        </div>
+      </div>
+
+<div class="row" id="expenses">
+  <%=render partial: "expenses_list", locals: { marcela: @expenses} %>
+</div>      
+    </div>
+  </div>
+<script>
+  
+  $(document).ready(function(){
+    $(".transaction-type").on('click', function(e) {
+      var filter = this.id;
+      var param = {"transaction_type": filter};
+      e.preventDefault();
+      $.ajax({
+        type: "GET",
+        url: "/expenses.js",
+        dataType: 'html',
+        data: param,
+        success: function(response){
+          $("#expenses").empty();
+          $("#expenses").html(response);
+        }
+      });
+    });
+  });
+
+</script>
+
+</body>

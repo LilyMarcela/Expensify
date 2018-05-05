@@ -1,0 +1,55 @@
+
+
+.row {
+  color: #9ba09f;
+  margin: 100px;
+  padding: 0px 50px;
+
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th { 
+  font-size: 150%;
+}
+
+td, th {
+    
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid;
+}
+
+tr:nth-child(even) {
+    color: #9ba09f;
+}
+
+.side_menu li{
+    background-color: #343A45;
+    border-bottom: 1px solid #9ba09f;
+    list-style-type:none;
+    padding: 15px;
+  
+}
+
+
+.list-group  .list-group-item {
+    background-color: #343A45;
+    color: #9ba09f;
+ 
+}
+
+h6 {
+  padding-bottom: 15px;
+  color: #9ba09f;
+}
+
+.transparent {
+  background-color: rgba(255, 255, 250, 0.1);
+  color: #dee8e6;
+}
+

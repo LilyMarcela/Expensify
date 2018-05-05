@@ -1,0 +1,21 @@
+
+        <table>
+          <tr>
+            <th>Día</th>
+            <th>Concepto</th>
+            <th>Categoria</th>
+            <th>Valor</th>
+          </tr>
+          <tbody>
+            <% marcela.each do |element| %>
+            <tr>
+              <td><%= element.date.strftime('%e %b') %></td>
+              <td><%= element.concept %></td>
+              <td><%= element.category.name %></td>
+              <td><%= number_to_currency(element.amount) %></td>
+              <td><%= element.transaction_type.name %></td>
+            </tr>
+           <%end %>
+          </tbody>
+        </table>
+      
